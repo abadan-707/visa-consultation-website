@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: visa-consultation-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: sqlite:./database.sqlite
+    disk:
+      name: visa-consultation-data
+      mountPath: /opt/render/project/src
+      sizeGB: 1
