@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apply for UAE Visa - Complete your visa application online with our secure and user-friendly form">
+    <meta name="keywords" content="UAE visa application, Dubai visa, Abu Dhabi visa, tourist visa, business visa">
+    <meta name="author" content="UAE Visa Services">
+    
+    <title>UAE Visa Application - Apply Online | UAE Visa Services</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Additional Styles for Application Form -->
+    <style>
+        .application-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .form-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .form-section h3 {
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3b82f6;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-row.single {
+            grid-template-columns: 1fr;
+        }
+        
+        .form-group {
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+        
+        .form-group label.required::after {
+            content: ' *';
+            color: #ef4444;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .form-group.error input,
+        .form-group.error select,
+        .form-group.error textarea {
+            border-color: #ef4444;
+        }
+        
+        .form-group.success input,
+        .form-group.success select,
+        .form-group.success textarea {
+            border-color: #10b981;
+        }
+        
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: block;
+        }
+        
+        .success-message {
+            color: #10b981;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: block;
+        }
+        
+        .file-upload-wrapper {
+            position: relative;
+        }
+        
+        .file-drop-zone {
+            border: 2px dashed #d1d5db;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f9fafb;
+        }
+        
+        .file-drop-zone:hover,
+        .file-drop-zone.drag-over {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+        
+        .file-drop-zone i {
+            font-size: 2rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+        
+        .file-input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .file-list {
+            margin-top: 1rem;
+        }
+        
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem;
+            background: #f3f4f6;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .file-remove {
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+        
+        .dependent-fields {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .visa-info {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .visa-fee,
+        .processing-time {
+            font-weight: 600;
+            color: #1e40af;
+        }
+        
+        .progress-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            flex: 1;
+        }
+        
+        .progress-step::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            width: 100%;
+            height: 2px;
+            background: #e5e7eb;
+            z-index: 1;
+        }
+        
+        .progress-step:last-child::before {
+            display: none;
+        }
+        
+        .progress-step.active::before {
+            background: #3b82f6;
+        }
+        
+        .step-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #6b7280;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .progress-step.active .step-circle {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .progress-step.completed .step-circle {
+            background: #10b981;
+            color: white;
+        }
+        
+        .step-label {
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            text-align: center;
+            color: #6b7280;
+        }
+        
+        .progress-step.active .step-label {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        
+        .submit-section {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .terms-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .terms-checkbox input[type="checkbox"] {
+            margin-top: 0.25rem;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-submit.loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .application-container {
+                padding: 1rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .form-section {
+                padding: 1.5rem;
+            }
+            
+            .progress-indicator {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .progress-step::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p>Loading Application Form...</p>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">
+                        <i class="fas fa-passport"></i>
+                        <span>UAE Visa Services</span>
+                    </a>
+                </div>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="./services.html">Services</a></li>
+                        <li><a href="./visa-application.html" class="active">Apply</a></li>
+                        <li><a href="./status-check.html">Check Status</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1 class="fade-in">UAE Visa Application</h1>
+                    <p class="fade-in" data-delay="200">Complete your visa application with our secure online form</p>
+                    <div class="breadcrumb fade-in" data-delay="400">
+                        <a href="../index.html">Home</a>
+                        <span>/</span>
+                        <span>Visa Application</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Form -->
+        <section class="application-section">
+            <div class="application-container">
+                <!-- Progress Indicator -->
+                <div class="progress-indicator">
+                    <div class="progress-step active">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Personal Info</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Passport Details</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Visa Information</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-circle">4</div>
+                        <div class="step-label">Documents</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-circle">5</div>
+                        <div class="step-label">Review & Submit</div>
+                    </div>
+                </div>
+
+                <!-- Application Form -->
+                <form id="visa-application-form" class="visa-form" enctype="multipart/form-data">
+                    <!-- Personal Information -->
+                    <div class="form-section slide-up" data-delay="100">
+                        <h3><i class="fas fa-user"></i> Personal Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName" class="required">First Name</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="required">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dateOfBirth" class="required">Date of Birth</label>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                                <span class="age-display"></span>
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender" class="required">Gender</label>
+                                <select id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nationality" class="required">Nationality</label>
+                                <select id="nationality" name="nationality" required>
+                                    <option value="">Select Nationality</option>
+                                    <option value="US">United States</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="IN">India</option>
+                                    <option value="PK">Pakistan</option>
+                                    <option value="BD">Bangladesh</option>
+                                    <option value="PH">Philippines</option>
+                                    <option value="EG">Egypt</option>
+                                    <option value="JO">Jordan</option>
+                                    <option value="LB">Lebanon</option>
+                                    <option value="SY">Syria</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="placeOfBirth" class="required">Place of Birth</label>
+                                <input type="text" id="placeOfBirth" name="placeOfBirth" required>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="maritalStatus" class="required">Marital Status</label>
+                                <select id="maritalStatus" name="maritalStatus" required>
+                                    <option value="">Select Status</option>
+                                    <option value="single">Single</option>
+                                    <option value="married">Married</option>
+                                    <option value="divorced">Divorced</option>
+                                    <option value="widowed">Widowed</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="occupation" class="required">Occupation</label>
+                                <input type="text" id="occupation" name="occupation" required>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="form-section slide-up" data-delay="200">
+                        <h3><i class="fas fa-address-book"></i> Contact Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" class="required">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="required">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row single">
+                            <div class="form-group">
+                                <label for="address" class="required">Current Address</label>
+                                <textarea id="address" name="address" rows="3" required></textarea>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city" class="required">City</label>
+                                <input type="text" id="city" name="city" required>
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="country" class="required">Country</label>
+                                <input type="text" id="country" name="country" required>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Passport Information -->
+                    <div class="form-section slide-up" data-delay="300">
+                        <h3><i class="fas fa-passport"></i> Passport Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="passportNumber" class="required">Passport Number</label>
+                                <input type="text" id="passportNumber" name="passportNumber" required>
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="passportIssueDate" class="required">Issue Date</label>
+                                <input type="date" id="passportIssueDate" name="passportIssueDate" required>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="passportExpiry" class="required">Expiry Date</label>
+                                <input type="date" id="passportExpiry" name="passportExpiry" required>
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="passportIssuePlace" class="required">Place of Issue</label>
+                                <input type="text" id="passportIssuePlace" name="passportIssuePlace" required>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visa Information -->
+                    <div class="form-section slide-up" data-delay="400">
+                        <h3><i class="fas fa-plane"></i> Visa Information</h3>
+                        
+                        <div class="visa-info">
+                            <div class="visa-fee">Visa Fee: $75</div>
+                            <div class="processing-time">Processing Time: 2-5 days</div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="visaType" class="required">Visa Type</label>
+                                <select id="visaType" name="visaType" required>
+                                    <option value="">Select Visa Type</option>
+                                    <option value="tourist">Tourist Visa</option>
+                                    <option value="business">Business Visa</option>
+                                    <option value="transit">Transit Visa</option>
+                                    <option value="family">Family Visit Visa</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="visaDuration" class="required">Visa Duration</label>
+                                <select id="visaDuration" name="visaDuration" required>
+                                    <option value="">Select Duration</option>
+                                    <option value="30">30 Days</option>
+                                    <option value="60">60 Days</option>
+                                    <option value="90">90 Days</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="entryDate" class="required">Intended Entry Date</label>
+                                <input type="date" id="entryDate" name="entryDate" required>
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exitDate" class="required">Intended Exit Date</label>
+                                <input type="date" id="exitDate" name="exitDate" required>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row single">
+                            <div class="form-group">
+                                <label for="purposeOfVisit" class="required">Purpose of Visit</label>
+                                <textarea id="purposeOfVisit" name="purposeOfVisit" rows="3" required></textarea>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <!-- Business Visa Fields -->
+                        <div class="dependent-fields business-fields">
+                            <h4>Business Visa Details</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="companyName">Company Name</label>
+                                    <input type="text" id="companyName" name="companyName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="companyAddress">Company Address</label>
+                                    <input type="text" id="companyAddress" name="companyAddress">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tourist Visa Fields -->
+                        <div class="dependent-fields tourist-fields">
+                            <h4>Tourist Visa Details</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="hotelName">Hotel/Accommodation</label>
+                                    <input type="text" id="hotelName" name="hotelName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tourOperator">Tour Operator (if any)</label>
+                                    <input type="text" id="tourOperator" name="tourOperator">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Family Visa Fields -->
+                        <div class="dependent-fields family-fields">
+                            <h4>Family Visit Details</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="relativeName">Relative's Name in UAE</label>
+                                    <input type="text" id="relativeName" name="relativeName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="relativeRelation">Relationship</label>
+                                    <select id="relativeRelation" name="relativeRelation">
+                                        <option value="">Select Relationship</option>
+                                        <option value="spouse">Spouse</option>
+                                        <option value="parent">Parent</option>
+                                        <option value="child">Child</option>
+                                        <option value="sibling">Sibling</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sponsor Fields -->
+                        <div class="dependent-fields sponsor-fields">
+                            <h4>Sponsor Information</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="sponsorName">Sponsor Name</label>
+                                    <input type="text" id="sponsorName" name="sponsorName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="sponsorPhone">Sponsor Phone</label>
+                                    <input type="tel" id="sponsorPhone" name="sponsorPhone">
+                                </div>
+                            </div>
+                            <div class="form-row single">
+                                <div class="form-group">
+                                    <label for="sponsorAddress">Sponsor Address in UAE</label>
+                                    <textarea id="sponsorAddress" name="sponsorAddress" rows="2"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Document Upload -->
+                    <div class="form-section slide-up" data-delay="500">
+                        <h3><i class="fas fa-upload"></i> Document Upload</h3>
+                        <p>Please upload the required documents. All files should be in PDF, JPG, or PNG format and not exceed 5MB.</p>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="passportCopy" class="required">Passport Copy</label>
+                                <div class="file-upload-wrapper">
+                                    <div class="file-drop-zone">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <p>Drop passport copy here or click to browse</p>
+                                        <small>PDF, JPG, PNG (Max 5MB)</small>
+                                    </div>
+                                    <input type="file" id="passportCopy" name="passportCopy" class="file-input" 
+                                           accept=".pdf,.jpg,.jpeg,.png" data-max-size="5242880" 
+                                           data-allowed-types=".pdf,.jpg,.jpeg,.png" required>
+                                    <div class="file-list"></div>
+                                </div>
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="photo" class="required">Passport Size Photo</label>
+                                <div class="file-upload-wrapper">
+                                    <div class="file-drop-zone">
+                                        <i class="fas fa-camera"></i>
+                                        <p>Drop photo here or click to browse</p>
+                                        <small>JPG, PNG (Max 2MB)</small>
+                                    </div>
+                                    <input type="file" id="photo" name="photo" class="file-input" 
+                                           accept=".jpg,.jpeg,.png" data-max-size="2097152" 
+                                           data-allowed-types=".jpg,.jpeg,.png" required>
+                                    <div class="file-list"></div>
+                                </div>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cv">CV/Resume (for Business Visa)</label>
+                                <div class="file-upload-wrapper">
+                                    <div class="file-drop-zone">
+                                        <i class="fas fa-file-alt"></i>
+                                        <p>Drop CV here or click to browse</p>
+                                        <small>PDF, DOC, DOCX (Max 5MB)</small>
+                                    </div>
+                                    <input type="file" id="cv" name="cv" class="file-input" 
+                                           accept=".pdf,.doc,.docx" data-max-size="5242880" 
+                                           data-allowed-types=".pdf,.doc,.docx">
+                                    <div class="file-list"></div>
+                                </div>
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="additionalDocs">Additional Documents</label>
+                                <div class="file-upload-wrapper">
+                                    <div class="file-drop-zone">
+                                        <i class="fas fa-paperclip"></i>
+                                        <p>Drop additional documents here</p>
+                                        <small>PDF, JPG, PNG (Max 10MB total)</small>
+                                    </div>
+                                    <input type="file" id="additionalDocs" name="additionalDocs" class="file-input" 
+                                           accept=".pdf,.jpg,.jpeg,.png" data-max-size="10485760" 
+                                           data-allowed-types=".pdf,.jpg,.jpeg,.png" multiple>
+                                    <div class="file-list"></div>
+                                </div>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms and Submit -->
+                    <div class="form-section slide-up" data-delay="600">
+                        <div class="submit-section">
+                            <div class="terms-checkbox">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <label for="terms">
+                                    I agree to the <a href="./terms.html" target="_blank">Terms and Conditions</a> 
+                                    and <a href="./privacy.html" target="_blank">Privacy Policy</a>. 
+                                    I confirm that all information provided is accurate and complete.
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn-submit">
+                                <i class="fas fa-paper-plane"></i>
+                                Submit Application
+                            </button>
+                            
+                            <p class="submit-note">
+                                Your application will be processed within 2-5 business days. 
+                                You will receive a confirmation email with your application ID.
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-passport"></i>
+                        <span>UAE Visa Services</span>
+                    </div>
+                    <p>Your trusted partner for UAE visa applications. Fast, secure, and reliable service.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="./services.html">Services</a></li>
+                        <li><a href="./visa-application.html">Apply Now</a></li>
+                        <li><a href="./status-check.html">Check Status</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="./contact.html">Contact Us</a></li>
+                        <li><a href="./faq.html">FAQ</a></li>
+                        <li><a href="./terms.html">Terms & Conditions</a></li>
+                        <li><a href="./privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +971 4 123 4567</p>
+                        <p><i class="fas fa-envelope"></i> info@uaevisaservices.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Dubai, UAE</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 UAE Visa Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Success/Error Messages -->
+    <div class="message-container" id="messageContainer"></div>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/forms.js"></script>
+    <script src="../js/animations.js"></script>
+</body>
+</html>

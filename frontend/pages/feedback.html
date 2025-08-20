@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Share your feedback about UAE Visa Services - Help us improve our services">
+    <meta name="keywords" content="UAE visa feedback, customer review, visa service rating, feedback form">
+    <meta name="author" content="UAE Visa Services">
+    
+    <title>Feedback - UAE Visa Services | Share Your Experience</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Additional Styles for Feedback Page -->
+    <style>
+        .feedback-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .feedback-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .feedback-intro h2 {
+            color: #1f2937;
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+        }
+        
+        .feedback-intro p {
+            color: #6b7280;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .feedback-form {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .form-section {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .section-title {
+            color: #1f2937;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .rating-group {
+            margin-bottom: 1rem;
+        }
+        
+        .rating-label {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+            color: #374151;
+        }
+        
+        .rating-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .star-rating {
+            display: flex;
+            gap: 0.25rem;
+        }
+        
+        .star {
+            font-size: 1.5rem;
+            color: #d1d5db;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        
+        .star:hover,
+        .star.active {
+            color: #fbbf24;
+        }
+        
+        .rating-text {
+            font-weight: 500;
+            color: #6b7280;
+            min-width: 80px;
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+        
+        .checkbox-item label {
+            margin: 0;
+            font-weight: normal;
+            cursor: pointer;
+        }
+        
+        .form-group.error input,
+        .form-group.error select,
+        .form-group.error textarea {
+            border-color: #ef4444;
+        }
+        
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+        
+        .form-group.error .error-message {
+            display: block;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border: none;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .testimonials {
+            margin-top: 4rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 2rem;
+        }
+        
+        .testimonials h3 {
+            text-align: center;
+            color: #1f2937;
+            margin-bottom: 2rem;
+            font-size: 1.75rem;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .testimonial-rating {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-rating .star {
+            font-size: 1rem;
+            color: #fbbf24;
+        }
+        
+        .testimonial-text {
+            color: #6b7280;
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        .testimonial-service {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 768px) {
+            .feedback-container {
+                padding: 1rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+            
+            .rating-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p>Loading Feedback Form...</p>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">
+                        <i class="fas fa-passport"></i>
+                        <span>UAE Visa Services</span>
+                    </a>
+                </div>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="./services.html">Services</a></li>
+                        <li><a href="./visa-application.html">Apply</a></li>
+                        <li><a href="./status-check.html">Check Status</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1 class="fade-in">Share Your Feedback</h1>
+                    <p class="fade-in" data-delay="200">Help us improve our services by sharing your experience</p>
+                    <div class="breadcrumb fade-in" data-delay="400">
+                        <a href="../index.html">Home</a>
+                        <span>/</span>
+                        <span>Feedback</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback Section -->
+        <section class="feedback-section">
+            <div class="feedback-container">
+                <!-- Feedback Introduction -->
+                <div class="feedback-intro slide-up" data-delay="100">
+                    <h2>We Value Your Opinion</h2>
+                    <p>Your feedback helps us continuously improve our visa services. Please take a few minutes to share your experience with us. Your input is invaluable in helping us serve you better.</p>
+                </div>
+                
+                <!-- Feedback Form -->
+                <div class="feedback-form slide-up" data-delay="200">
+                    <form id="feedback-form">
+                        <!-- Personal Information -->
+                        <div class="form-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-user"></i>
+                                Personal Information
+                            </h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                    <div class="error-message">Please enter your first name</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                    <div class="error-message">Please enter your last name</div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required>
+                                    <div class="error-message">Please enter a valid email address</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone">
+                                    <div class="error-message">Please enter a valid phone number</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Service Information -->
+                        <div class="form-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-cogs"></i>
+                                Service Information
+                            </h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="serviceUsed">Service Used *</label>
+                                    <select id="serviceUsed" name="serviceUsed" required>
+                                        <option value="">Select service</option>
+                                        <option value="tourist-visa">Tourist Visa</option>
+                                        <option value="business-visa">Business Visa</option>
+                                        <option value="family-visa">Family Visit Visa</option>
+                                        <option value="transit-visa">Transit Visa</option>
+                                        <option value="student-visa">Student Visa</option>
+                                        <option value="work-visa">Work Visa</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <div class="error-message">Please select the service you used</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="applicationId">Application ID (Optional)</label>
+                                    <input type="text" id="applicationId" name="applicationId" placeholder="UAE-2024-001234">
+                                    <div class="error-message">Please enter a valid application ID</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Rating Section -->
+                        <div class="form-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-star"></i>
+                                Rate Your Experience
+                            </h3>
+                            
+                            <div class="rating-group">
+                                <label class="rating-label">Overall Satisfaction *</label>
+                                <div class="rating-container">
+                                    <div class="star-rating" data-rating="overallRating">
+                                        <i class="fas fa-star star" data-value="1"></i>
+                                        <i class="fas fa-star star" data-value="2"></i>
+                                        <i class="fas fa-star star" data-value="3"></i>
+                                        <i class="fas fa-star star" data-value="4"></i>
+                                        <i class="fas fa-star star" data-value="5"></i>
+                                    </div>
+                                    <span class="rating-text" id="overallRatingText">Not rated</span>
+                                </div>
+                                <input type="hidden" id="overallRating" name="overallRating" required>
+                            </div>
+                            
+                            <div class="rating-group">
+                                <label class="rating-label">Processing Speed</label>
+                                <div class="rating-container">
+                                    <div class="star-rating" data-rating="speedRating">
+                                        <i class="fas fa-star star" data-value="1"></i>
+                                        <i class="fas fa-star star" data-value="2"></i>
+                                        <i class="fas fa-star star" data-value="3"></i>
+                                        <i class="fas fa-star star" data-value="4"></i>
+                                        <i class="fas fa-star star" data-value="5"></i>
+                                    </div>
+                                    <span class="rating-text" id="speedRatingText">Not rated</span>
+                                </div>
+                                <input type="hidden" id="speedRating" name="speedRating">
+                            </div>
+                            
+                            <div class="rating-group">
+                                <label class="rating-label">Customer Support</label>
+                                <div class="rating-container">
+                                    <div class="star-rating" data-rating="supportRating">
+                                        <i class="fas fa-star star" data-value="1"></i>
+                                        <i class="fas fa-star star" data-value="2"></i>
+                                        <i class="fas fa-star star" data-value="3"></i>
+                                        <i class="fas fa-star star" data-value="4"></i>
+                                        <i class="fas fa-star star" data-value="5"></i>
+                                    </div>
+                                    <span class="rating-text" id="supportRatingText">Not rated</span>
+                                </div>
+                                <input type="hidden" id="supportRating" name="supportRating">
+                            </div>
+                        </div>
+                        
+                        <!-- Feedback Details -->
+                        <div class="form-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-comments"></i>
+                                Your Feedback
+                            </h3>
+                            
+                            <div class="form-group">
+                                <label for="feedbackType">Feedback Type *</label>
+                                <select id="feedbackType" name="feedbackType" required>
+                                    <option value="">Select feedback type</option>
+                                    <option value="compliment">Compliment</option>
+                                    <option value="suggestion">Suggestion</option>
+                                    <option value="complaint">Complaint</option>
+                                    <option value="general">General Feedback</option>
+                                </select>
+                                <div class="error-message">Please select feedback type</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <input type="text" id="subject" name="subject" placeholder="Brief summary of your feedback" required>
+                                <div class="error-message">Please enter a subject</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Detailed Feedback *</label>
+                                <textarea id="message" name="message" placeholder="Please share your detailed feedback, suggestions, or concerns..." required></textarea>
+                                <div class="error-message">Please enter your feedback</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>What did you like most about our service? (Select all that apply)</label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="fast-processing" name="positiveAspects" value="fast-processing">
+                                        <label for="fast-processing">Fast Processing</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="helpful-support" name="positiveAspects" value="helpful-support">
+                                        <label for="helpful-support">Helpful Support</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="easy-application" name="positiveAspects" value="easy-application">
+                                        <label for="easy-application">Easy Application Process</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="clear-communication" name="positiveAspects" value="clear-communication">
+                                        <label for="clear-communication">Clear Communication</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="competitive-pricing" name="positiveAspects" value="competitive-pricing">
+                                        <label for="competitive-pricing">Competitive Pricing</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="user-friendly-website" name="positiveAspects" value="user-friendly-website">
+                                        <label for="user-friendly-website">User-Friendly Website</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Recommendation -->
+                        <div class="form-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-thumbs-up"></i>
+                                Recommendation
+                            </h3>
+                            
+                            <div class="form-group">
+                                <label for="wouldRecommend">Would you recommend our services to others? *</label>
+                                <select id="wouldRecommend" name="wouldRecommend" required>
+                                    <option value="">Select an option</option>
+                                    <option value="definitely">Definitely</option>
+                                    <option value="probably">Probably</option>
+                                    <option value="maybe">Maybe</option>
+                                    <option value="probably-not">Probably Not</option>
+                                    <option value="definitely-not">Definitely Not</option>
+                                </select>
+                                <div class="error-message">Please select an option</div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Feedback
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Customer Testimonials -->
+                <div class="testimonials slide-up" data-delay="300">
+                    <h3>What Our Customers Say</h3>
+                    <div class="testimonial-grid">
+                        <div class="testimonial-card">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                            </div>
+                            <p class="testimonial-text">"Excellent service! My tourist visa was processed in just 2 days. The team was very helpful and kept me updated throughout the process."</p>
+                            <div class="testimonial-author">Sarah Johnson</div>
+                            <div class="testimonial-service">Tourist Visa</div>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                            </div>
+                            <p class="testimonial-text">"Professional and efficient service. The online application process was smooth and the customer support was outstanding."</p>
+                            <div class="testimonial-author">Ahmed Al-Rashid</div>
+                            <div class="testimonial-service">Business Visa</div>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                            </div>
+                            <p class="testimonial-text">"I was impressed by how easy it was to track my application status. Great transparency and communication throughout."</p>
+                            <div class="testimonial-author">Maria Rodriguez</div>
+                            <div class="testimonial-service">Family Visit Visa</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-passport"></i>
+                        <span>UAE Visa Services</span>
+                    </div>
+                    <p>Your trusted partner for UAE visa applications. Fast, secure, and reliable service.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="./services.html">Services</a></li>
+                        <li><a href="./visa-application.html">Apply Now</a></li>
+                        <li><a href="./status-check.html">Check Status</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="./contact.html">Contact Us</a></li>
+                        <li><a href="./faq.html">FAQ</a></li>
+                        <li><a href="./terms.html">Terms & Conditions</a></li>
+                        <li><a href="./privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +971 4 123 4567</p>
+                        <p><i class="fas fa-envelope"></i> info@uaevisaservices.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Dubai, UAE</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 UAE Visa Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Success/Error Messages -->
+    <div class="message-container" id="messageContainer"></div>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/forms.js"></script>
+    <script src="../js/animations.js"></script>
+    
+    <!-- Feedback Page Specific JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Star rating functionality
+            const starRatings = document.querySelectorAll('.star-rating');
+            
+            starRatings.forEach(rating => {
+                const stars = rating.querySelectorAll('.star');
+                const ratingName = rating.dataset.rating;
+                const hiddenInput = document.getElementById(ratingName);
+                const ratingText = document.getElementById(ratingName + 'Text');
+                
+                const ratingLabels = {
+                    1: 'Poor',
+                    2: 'Fair',
+                    3: 'Good',
+                    4: 'Very Good',
+                    5: 'Excellent'
+                };
+                
+                stars.forEach((star, index) => {
+                    star.addEventListener('click', () => {
+                        const value = parseInt(star.dataset.value);
+                        hiddenInput.value = value;
+                        ratingText.textContent = ratingLabels[value];
+                        
+                        // Update star display
+                        stars.forEach((s, i) => {
+                            if (i < value) {
+                                s.classList.add('active');
+                            } else {
+                                s.classList.remove('active');
+                            }
+                        });
+                    });
+                    
+                    star.addEventListener('mouseenter', () => {
+                        const value = parseInt(star.dataset.value);
+                        stars.forEach((s, i) => {
+                            if (i < value) {
+                                s.style.color = '#fbbf24';
+                            } else {
+                                s.style.color = '#d1d5db';
+                            }
+                        });
+                    });
+                });
+                
+                rating.addEventListener('mouseleave', () => {
+                    const currentValue = parseInt(hiddenInput.value) || 0;
+                    stars.forEach((s, i) => {
+                        if (i < currentValue) {
+                            s.style.color = '#fbbf24';
+                        } else {
+                            s.style.color = '#d1d5db';
+                        }
+                    });
+                });
+            });
+            
+            // Form handling is managed by forms.js
+            // Additional feedback-specific functionality can be added here
+        });
+    </script>
+</body>
+</html>
