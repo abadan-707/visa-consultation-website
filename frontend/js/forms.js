@@ -85,7 +85,7 @@ class FormHandler {
 
     setupDependentFields() {
         // Visa type dependent fields
-        const visaTypeSelect = this.form.querySelector('select[name="visaType"]');
+        const visaTypeSelect = this.form.querySelector('select[name="visa_type"]');
         if (visaTypeSelect) {
             visaTypeSelect.addEventListener('change', (e) => {
                 this.handleVisaTypeChange(e.target.value);
@@ -272,6 +272,14 @@ class FormHandler {
         if (field.name === 'passportExpiry') {
             this.validatePassportExpiry(field.value);
         }
+        
+        if (field.name === 'arrival_date') {
+            this.validateArrivalDate(field.value);
+        }
+        
+        if (field.name === 'departure_date') {
+            this.validateDepartureDate(field.value);
+        }
     }
 
     handleFieldInput(e) {
@@ -330,6 +338,42 @@ class FormHandler {
         } else {
             this.clearFieldError(passportField);
         }
+    }
+
+    validateArrivalDate(arrivalDate) {
+        if (!arrivalDate) return;
+        
+        const arrival = new Date(arrivalDate);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Reset time to start of day
+        
+        const field = this.form.querySelector('input[name="arrival_date"]');
+        
+        if (arrival < today) {
+            this.showFieldError(field, 'Arrival date cannot be in the past');
+        } else {
+            this.clearFieldError(field);
+        }
+    }
+    
+    validateDepartureDate(departureDate) {
+        if (!departureDate) return;
+        
+        const departure = new Date(departureDate);
+        const arrivalField = this.form.querySelector('input[name="arrival_date"]');
+        const arrivalDate = arrivalField ? arrivalField.value : null;
+        
+        const field = this.form.querySelector('input[name="departure_date"]');
+        
+        if (arrivalDate) {
+            const arrival = new Date(arrivalDate);
+            if (departure <= arrival) {
+                this.showFieldError(field, 'Departure date must be after arrival date');
+                return;
+            }
+        }
+        
+        this.clearFieldError(field);
     }
 
     formatPhoneNumber(phone) {

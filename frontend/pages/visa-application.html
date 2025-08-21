@@ -612,7 +612,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="visaType" class="required">Visa Type</label>
-                                <select id="visaType" name="visaType" required>
+                                <select id="visaType" name="visa_type" required>
                                     <option value="">Select Visa Type</option>
                                     <option value="tourist">Tourist Visa</option>
                                     <option value="business">Business Visa</option>
@@ -622,8 +622,8 @@
                                 <span class="error-message"></span>
                             </div>
                             <div class="form-group">
-                                <label for="visaDuration" class="required">Visa Duration</label>
-                                <select id="visaDuration" name="visaDuration" required>
+                                <label for="durationOfStay" class="required">Visa Duration</label>
+                                <select id="durationOfStay" name="duration_of_stay" required>
                                     <option value="">Select Duration</option>
                                     <option value="30">30 Days</option>
                                     <option value="60">60 Days</option>
@@ -635,13 +635,13 @@
                         
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="entryDate" class="required">Intended Entry Date</label>
-                                <input type="date" id="entryDate" name="entryDate" required>
+                                <label for="arrivalDate" class="required">Intended Entry Date</label>
+                                <input type="date" id="arrivalDate" name="arrival_date" required>
                                 <span class="error-message"></span>
                             </div>
                             <div class="form-group">
-                                <label for="exitDate" class="required">Intended Exit Date</label>
-                                <input type="date" id="exitDate" name="exitDate" required>
+                                <label for="departureDate" class="required">Intended Exit Date</label>
+                                <input type="date" id="departureDate" name="departure_date" required>
                                 <span class="error-message"></span>
                             </div>
                         </div>
@@ -649,7 +649,7 @@
                         <div class="form-row single">
                             <div class="form-group">
                                 <label for="purposeOfVisit" class="required">Purpose of Visit</label>
-                                <textarea id="purposeOfVisit" name="purposeOfVisit" rows="3" required></textarea>
+                                <textarea id="purposeOfVisit" name="purpose_of_visit" rows="3" required minlength="10" maxlength="500" placeholder="Please describe your purpose of visit (minimum 10 characters)"></textarea>
                                 <span class="error-message"></span>
                             </div>
                         </div>
