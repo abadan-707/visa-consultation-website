@@ -728,6 +728,66 @@
                         </div>
                     </div>
 
+                    <!-- Additional Information -->
+                    <div class="form-section slide-up" data-delay="450">
+                        <h3><i class="fas fa-info-circle"></i> Additional Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="previousUaeVisit" class="required">Have you visited UAE before?</label>
+                                <select id="previousUaeVisit" name="previous_uae_visit" required>
+                                    <option value="">Select Option</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="criminalRecord" class="required">Do you have any criminal record?</label>
+                                <select id="criminalRecord" name="criminal_record" required>
+                                    <option value="">Select Option</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row single">
+                            <div class="form-group">
+                                <label for="medicalConditions">Medical Conditions (if any)</label>
+                                <textarea id="medicalConditions" name="medical_conditions" rows="2" maxlength="500" placeholder="Please describe any medical conditions that may affect your travel"></textarea>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Contact -->
+                    <div class="form-section slide-up" data-delay="475">
+                        <h3><i class="fas fa-phone-alt"></i> Emergency Contact</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="emergencyContactName" class="required">Emergency Contact Name</label>
+                                <input type="text" id="emergencyContactName" name="emergency_contact_name" required minlength="2" maxlength="100">
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="emergencyContactPhone" class="required">Emergency Contact Phone</label>
+                                <input type="tel" id="emergencyContactPhone" name="emergency_contact_phone" required>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row single">
+                            <div class="form-group">
+                                <label for="emergencyContactRelationship" class="required">Relationship</label>
+                                <input type="text" id="emergencyContactRelationship" name="emergency_contact_relationship" required minlength="2" maxlength="50" placeholder="e.g., Father, Mother, Spouse, Friend">
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Document Upload -->
                     <div class="form-section slide-up" data-delay="500">
                         <h3><i class="fas fa-upload"></i> Document Upload</h3>

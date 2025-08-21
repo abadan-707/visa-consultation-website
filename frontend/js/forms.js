@@ -280,6 +280,23 @@ class FormHandler {
         if (field.name === 'departure_date') {
             this.validateDepartureDate(field.value);
         }
+        
+        // Add validation for new required fields
+        if (field.name === 'previous_uae_visit') {
+            this.validateRequiredSelect(field, 'Please select if you have visited UAE before');
+        }
+        if (field.name === 'criminal_record') {
+            this.validateRequiredSelect(field, 'Please select if you have any criminal record');
+        }
+        if (field.name === 'emergency_contact_name') {
+            this.validateRequiredText(field, 'Emergency contact name is required', 2, 100);
+        }
+        if (field.name === 'emergency_contact_phone') {
+            this.validatePhone(field, 'Please enter a valid emergency contact phone number');
+        }
+        if (field.name === 'emergency_contact_relationship') {
+            this.validateRequiredText(field, 'Emergency contact relationship is required', 2, 50);
+        }
     }
 
     handleFieldInput(e) {
@@ -402,6 +419,49 @@ class FormHandler {
         const errorElement = formGroup.querySelector('.error-message');
         if (errorElement) {
             errorElement.remove();
+        }
+    }
+
+    validateRequiredSelect(field, message) {
+        if (!field.value || field.value === '') {
+            this.showFieldError(field, message);
+            return false;
+        } else {
+            this.clearFieldError(field);
+            return true;
+        }
+    }
+
+    validateRequiredText(field, message, minLength = 1, maxLength = 255) {
+        const value = field.value.trim();
+        if (!value) {
+            this.showFieldError(field, message);
+            return false;
+        } else if (value.length < minLength) {
+            this.showFieldError(field, `Minimum ${minLength} characters required`);
+            return false;
+        } else if (value.length > maxLength) {
+            this.showFieldError(field, `Maximum ${maxLength} characters allowed`);
+            return false;
+        } else {
+            this.clearFieldError(field);
+            return true;
+        }
+    }
+
+    validatePhone(field, message) {
+        const phoneRegex = /^[+]?[1-9]?[0-9]{7,15}$/;
+        const value = field.value.replace(/[\s\-\(\)]/g, '');
+        
+        if (!value) {
+            this.showFieldError(field, 'Phone number is required');
+            return false;
+        } else if (!phoneRegex.test(value)) {
+            this.showFieldError(field, message);
+            return false;
+        } else {
+            this.clearFieldError(field);
+            return true;
         }
     }
 
