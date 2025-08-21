@@ -595,7 +595,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentPage = window.location.pathname;
     
     if (currentPage.includes('visa-application')) {
-        new FormHandler('#visa-application-form', '/visa/apply', {
+        new FormHandler('#visa-application-form', '/visa/application', {
             redirectOnSuccess: './status-check.html',
             customValidation: async (form) => {
                 // Add custom visa application validation
