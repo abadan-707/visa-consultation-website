@@ -295,6 +295,12 @@ const formValidation = {
         let isValid = true;
         let message = '';
 
+        // Check if formGroup exists to prevent null errors
+        if (!formGroup) {
+            console.warn('Form group not found for field:', field);
+            return { isValid: false, message: 'Form structure error' };
+        }
+
         // Remove previous validation classes
         formGroup.classList.remove('error', 'success');
         const existingMessage = formGroup.querySelector('.error-message, .success-message');
@@ -327,13 +333,13 @@ const formValidation = {
         }
 
         // Apply validation styling
-        if (!isValid) {
+        if (!isValid && formGroup) {
             formGroup.classList.add('error');
             const errorElement = document.createElement('span');
             errorElement.className = 'error-message';
             errorElement.textContent = message;
             formGroup.appendChild(errorElement);
-        } else if (value) {
+        } else if (value && formGroup) {
             formGroup.classList.add('success');
         }
 
@@ -367,10 +373,12 @@ const formValidation = {
             // Clear validation on focus
             field.addEventListener('focus', () => {
                 const formGroup = field.closest('.form-group');
-                formGroup.classList.remove('error', 'success');
-                const message = formGroup.querySelector('.error-message, .success-message');
-                if (message) {
-                    message.remove();
+                if (formGroup) {
+                    formGroup.classList.remove('error', 'success');
+                    const message = formGroup.querySelector('.error-message, .success-message');
+                    if (message) {
+                        message.remove();
+                    }
                 }
             });
 
